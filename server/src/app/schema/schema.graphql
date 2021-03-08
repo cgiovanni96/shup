@@ -3,6 +3,34 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+input CreateIteamInputType {
+  category: String!
+  image: String
+  name: String!
+  note: String
+}
+
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
+type Item {
+  category: String!
+  createdAt: DateTime!
+  id: String!
+  image: String!
+  name: String!
+  note: String!
+  updatedAt: DateTime!
+}
+
+type Mutation {
+  createItem(data: CreateIteamInputType!): Item
+}
+
 type Query {
+  getItem(id: String!): Item
+  getItems: [Item!]
   hello: String!
 }

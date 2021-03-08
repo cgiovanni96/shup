@@ -10,7 +10,7 @@ import { Field, ObjectType } from 'type-graphql'
 
 @Entity()
 @ObjectType()
-export default class Comment extends BaseEntity {
+export default class Item extends BaseEntity {
 	@PrimaryGeneratedColumn('uuid')
 	@Field()
 	id: string
@@ -23,11 +23,11 @@ export default class Comment extends BaseEntity {
 	@Field()
 	category: string
 
-	@Column('text')
+	@Column('text', { nullable: true })
 	@Field()
 	note: string
 
-	@Column()
+	@Column({ nullable: true })
 	@Field()
 	image: string
 
