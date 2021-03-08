@@ -26,11 +26,16 @@ type Item {
 }
 
 type Mutation {
+  addImage(file: Upload!): Boolean!
   createItem(data: CreateIteamInputType!): Item
 }
 
 type Query {
+  getImage: String!
   getItem(id: String!): Item
   getItems: [Item!]
   hello: String!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

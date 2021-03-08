@@ -5,6 +5,7 @@ import cors from 'cors'
 
 // import session, { redis } from './redis'
 import build from '../schema/build'
+import { graphqlUploadExpress } from 'graphql-upload'
 // import Context from './context'
 // import { loaders } from './loaders'
 
@@ -18,10 +19,13 @@ export default async (emitSchema: boolean = false, PORT: string) => {
 			origin: 'http://localhost:3000'
 		})
 	)
+
+	app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }))
 	// app.use(session)
 
 	const server = new ApolloServer({
-		schema: await build(emitSchema)
+		schema: await build(emitSchema),
+		uploads: false
 		// context: ({ req, res }): Context => ({
 		// 	req,
 		// 	res,
