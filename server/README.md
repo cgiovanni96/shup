@@ -1,3 +1,3 @@
-# SHUP
+# SHUP server
 
-## A shopping list app
+## Shup server side
