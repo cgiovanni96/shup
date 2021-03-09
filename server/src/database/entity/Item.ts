@@ -3,10 +3,13 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
+	JoinColumn,
+	OneToOne,
 	PrimaryGeneratedColumn,
 	UpdateDateColumn
 } from 'typeorm'
 import { Field, ObjectType } from 'type-graphql'
+import Image from './Image'
 
 @Entity()
 @ObjectType()
@@ -27,9 +30,10 @@ export default class Item extends BaseEntity {
 	@Field()
 	note: string
 
-	@Column({ nullable: true })
-	@Field()
-	image: string
+	@OneToOne(() => Image, { nullable: true })
+	@JoinColumn()
+	@Field(() => Image)
+	image?: Image
 
 	@CreateDateColumn()
 	@Field()

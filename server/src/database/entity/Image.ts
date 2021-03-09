@@ -4,9 +4,11 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
+	OneToOne,
 	PrimaryGeneratedColumn,
 	UpdateDateColumn
 } from 'typeorm'
+import Item from './Item'
 
 @Entity()
 @ObjectType()
@@ -18,6 +20,9 @@ export default class Image extends BaseEntity {
 	@Column()
 	@Field()
 	path: string
+
+	@OneToOne(() => Item, (item) => item.image)
+	item: Item
 
 	@CreateDateColumn()
 	@Field()

@@ -12,5 +12,5 @@ export default class CreateIteamInputType {
 	note?: string
 
 	@Field({ nullable: true })
-	image?: string
+	imageId?: string
 }
