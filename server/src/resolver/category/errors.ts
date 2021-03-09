@@ -1,4 +1,4 @@
-import CategoryResponse from '../../database/schema/response/CategoryResponse'
+import CategoryResponse from '../../model/schema/response/CategoryResponse'
 
 export const CategoryAlreadyExists: CategoryResponse = {
 	errors: [

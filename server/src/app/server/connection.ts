@@ -6,7 +6,8 @@ import cors from 'cors'
 // import session, { redis } from './redis'
 import build from '../schema/build'
 import { graphqlUploadExpress } from 'graphql-upload'
-// import Context from './context'
+import Context from './context'
+import { loaders } from './loaders'
 // import { loaders } from './loaders'
 
 export default async (emitSchema: boolean = false, PORT: string) => {
@@ -25,13 +26,10 @@ export default async (emitSchema: boolean = false, PORT: string) => {
 
 	const server = new ApolloServer({
 		schema: await build(emitSchema),
-		uploads: false
-		// context: ({ req, res }): Context => ({
-		// 	req,
-		// 	res,
-		// 	redis,
-		// 	loaders
-		// })
+		uploads: false,
+		context: (): Context => ({
+			loaders
+		})
 	})
 
 	server.applyMiddleware({ app, cors: false })

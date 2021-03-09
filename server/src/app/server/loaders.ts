@@ -1,9 +1,11 @@
+import categoryLoader from '../../model/loader/categoryLoader'
+
 export type Loaders = {
-	// userLoader: ReturnType<typeof userLoader>
+	categoryLoader: ReturnType<typeof categoryLoader>
 }
 
 export const loaders: Loaders = {
-	// userLoader: userLoader()
+	categoryLoader: categoryLoader()
 }
 
 export default Loaders

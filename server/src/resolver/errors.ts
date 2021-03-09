@@ -1,4 +1,4 @@
-import ItemResponse from '../database/schema/response/ItemResponse'
+import ItemResponse from '../model/schema/response/ItemResponse'
 
 export const GenericError: ItemResponse = {
 	errors: [

@@ -2,7 +2,7 @@ import { createWriteStream } from 'fs'
 import { Arg, Mutation, Query, Resolver } from 'type-graphql'
 import { GraphQLUpload, FileUpload } from 'graphql-upload'
 import createImageName from '../../app/utils/createImageName'
-import Image from '../../database/entity/Image'
+import Image from '../../model/entity/Image'
 
 @Resolver()
 export default class ImageResolver {
