@@ -4,9 +4,11 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
+	OneToMany,
 	PrimaryGeneratedColumn,
 	UpdateDateColumn
 } from 'typeorm'
+import Item from './Item'
 
 @Entity()
 @ObjectType()
@@ -18,6 +20,9 @@ export default class Category extends BaseEntity {
 	@Column({ unique: true })
 	@Field()
 	name: string
+
+	@OneToMany(() => Item, (item) => item.category)
+	items: Item[]
 
 	@CreateDateColumn()
 	@Field()

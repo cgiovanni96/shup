@@ -4,12 +4,15 @@ import {
 	CreateDateColumn,
 	Entity,
 	JoinColumn,
+	ManyToOne,
 	OneToOne,
 	PrimaryGeneratedColumn,
 	UpdateDateColumn
 } from 'typeorm'
 import { Field, ObjectType } from 'type-graphql'
 import Image from './Image'
+import Category from './Category'
+import CategoryResolver from '../../resolver/category'
 
 @Entity()
 @ObjectType()
@@ -24,7 +27,11 @@ export default class Item extends BaseEntity {
 
 	@Column()
 	@Field()
-	category: string
+	categoryId: string
+
+	@ManyToOne(() => Category)
+	@Field(() => CategoryResolver)
+	category: Category
 
 	@Column('text', { nullable: true })
 	@Field()

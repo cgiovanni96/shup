@@ -1,12 +1,12 @@
 import { Field, InputType } from 'type-graphql'
 
 @InputType()
-export default class CreateIteamInputType {
+export default class AddIteamInputType {
 	@Field()
 	name: string
 
 	@Field()
-	category: string
+	categoryId: string
 
 	@Field({ nullable: true })
 	note?: string
