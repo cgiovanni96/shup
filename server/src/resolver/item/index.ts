@@ -55,4 +55,14 @@ export default class ItemResolver {
 			return GenericError
 		}
 	}
+
+	@Mutation(() => Boolean)
+	async deleteItem(@Arg('id') id: string): Promise<boolean> {
+		try {
+			await Item.delete({ id })
+			return true
+		} catch {
+			return false
+		}
+	}
 }
