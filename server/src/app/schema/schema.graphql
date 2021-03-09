@@ -15,6 +15,13 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
+type Image {
+  createdAt: DateTime!
+  id: String!
+  path: String!
+  updatedAt: DateTime!
+}
+
 type Item {
   category: String!
   createdAt: DateTime!
@@ -32,6 +39,7 @@ type Mutation {
 
 type Query {
   getImage: String!
+  getImages: [Image!]!
   getItem(id: String!): Item
   getItems: [Item!]
   hello: String!

@@ -13,11 +13,16 @@ export default class ImageResolver {
 		return 'image'
 	}
 
-	@Mutation(() => Image, { nullable: true })
+	@Query(() => [Image])
+	async getImages(): Promise<Image[]> {
+		return Image.find()
+	}
+
+	@Mutation(() => Boolean)
 	async addImage(
 		@Arg('file', () => GraphQLUpload)
 		{ filename, createReadStream }: FileUpload
-	): Promise<Image | undefined> {
+	): Promise<Boolean> {
 		return new Promise(async (resolve, reject) => {
 			const imageName = createImageName(filename)
 			const writeStream = createWriteStream(
@@ -26,10 +31,11 @@ export default class ImageResolver {
 			)
 			createReadStream()
 				.pipe(writeStream)
-				.on('error', () => reject(undefined))
+				.on('error', () => reject(false))
 				.on('finish', async () => {
 					const newImage = await Image.create({ path: imageName })
-					resolve(newImage.save())
+					await newImage.save()
+					resolve(true)
 				})
 		})
 	}
