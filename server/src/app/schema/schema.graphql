@@ -3,6 +3,13 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Category {
+  createdAt: DateTime!
+  id: String!
+  name: String!
+  updatedAt: DateTime!
+}
+
 input CreateIteamInputType {
   category: String!
   imageId: String
@@ -33,11 +40,13 @@ type Item {
 }
 
 type Mutation {
+  addCategory(name: String!): Category
   addImage(file: Upload!): Boolean!
-  createItem(data: CreateIteamInputType!): Item
+  addItem(data: CreateIteamInputType!): Item
 }
 
 type Query {
+  getCategories: [Category!]!
   getImage: String!
   getImages: [Image!]!
   getItem(id: String!): Item

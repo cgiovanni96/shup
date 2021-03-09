@@ -18,7 +18,7 @@ export default class ItemResolver {
 	}
 
 	@Mutation(() => Item, { nullable: true })
-	async createItem(
+	async addItem(
 		@Arg('data') { name, category, note, imageId }: CreateIteamInputType
 	): Promise<Item | undefined> {
 		try {
