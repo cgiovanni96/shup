@@ -3,7 +3,8 @@ import { NOT_UNIQUE_NAME } from '../../app/utils/constants'
 import Image from '../../database/entity/Image'
 import Item from '../../database/entity/Item'
 import ItemResponse from '../../database/schema/response/ItemResponse'
-import { GenericError, ItemAlreadyExists } from './errors'
+import { GenericError } from '../errors'
+import { ItemAlreadyExists } from './errors'
 import CreateIteamInputType from './types/AddItemInputType'
 
 @Resolver()

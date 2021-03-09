@@ -8,5 +8,5 @@ export default class CategoryResponse {
 	errors?: FieldError[]
 
 	@Field(() => Category, { nullable: true })
-	item?: Category
+	category?: Category
 }
